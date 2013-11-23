@@ -7,6 +7,7 @@ Per Michael Sarasti of Miami-Dade County: "[this file] includes all businesses t
 This can also be obtained through the following link:
 https://www.miamidade.county-taxes.com/public/reports/business_tax
 
-_Please note:_ while GitHub is capable of visualizing .csv files, the file in this repository is too large for GitHub's system. These files can be viewed in a variety of other applications. In lieu of this, a CSV with a smaller sample size has been included for rapid prototypes as well as to view the file from github.
+_Please note:_ while GitHub is capable of visualizing .csv files, the file in this repository is too large for GitHub's system. This can be viewed in a variety of other applications. 
+In lieu of this, a CSV with a smaller sample size has been included in the data directory for rapid prototypes as well as to view from github.
 
 Possibilities with this CSV include converting the data into a REST API for additional application development, or use in visualization projects.
