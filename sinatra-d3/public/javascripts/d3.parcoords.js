@@ -8,8 +8,8 @@ d3.parcoords = function(config) {
     mode: "default",
     rate: 20,
     width: 600,
-    height: 300,
-    margin: { top: 24, right: 0, bottom: 12, left: 0 },
+    height: 250,
+    margin: { top: 15, right: 300, bottom: 225, left: 50 },
     color: "#069",
     composite: "source-over",
     alpha: 0.7
@@ -40,6 +40,9 @@ var pc = function(selection) {
 
   return pc;
 };
+
+var formatPercent = d3.format(".0%")
+
 var events = d3.dispatch.apply(this,["render", "resize", "highlight", "brush"].concat(d3.keys(__))),
     w = function() { return __.width - __.margin.right - __.margin.left; },
     h = function() { return __.height - __.margin.top - __.margin.bottom },
@@ -55,7 +58,7 @@ var events = d3.dispatch.apply(this,["render", "resize", "highlight", "brush"].c
     yscale = {},
     dragging = {},
     line = d3.svg.line(),
-    axis = d3.svg.axis().orient("left").ticks(5),
+    axis = d3.svg.axis().orient("left").ticks(5).tickFormat(formatPercent),
     g, // groups for axes, brushes
     ctx = {},
     canvas = {};
@@ -156,7 +159,7 @@ pc.autoscale = function() {
 
   // default styles, needs to be set when canvas width changes
   ctx.foreground.strokeStyle = __.color;
-  ctx.foreground.lineWidth = 1.4;
+  ctx.foreground.lineWidth = 2;
   ctx.foreground.globalCompositeOperation = __.composite;
   ctx.foreground.globalAlpha = __.alpha;
   ctx.highlight.lineWidth = 3;
@@ -297,9 +300,9 @@ pc.createAxes = function() {
       .each(function(d) { d3.select(this).call(axis.scale(yscale[d])); })
     .append("svg:text")
       .attr({
-        "text-anchor": "middle",
-        "y": 0,
-        "transform": "translate(0,-12)",
+        "text-anchor": "bottom",
+        "y": -100,
+        "transform": "translate(-60, 700)rotate(30)",
         "x": 0,
         "class": "label"
       })
