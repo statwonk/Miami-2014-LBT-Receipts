@@ -4,10 +4,10 @@
 <link rel="stylesheet" type="text/css" href="/stylesheets/style.css">
 <script src="/javascripts/d3.min.js"></script>
 
-<h1> Percentage of business type by a count of all businesses in a certain zip code</h1>
+<h1> Share of business type by a count of all businesses in a certain zip code</h1>
 <p><button id="btnReset">Reset Brushes</button>
 <script src="/javascripts/d3.parcoords.js"></script>
-<div id="example" class="parcoords" style="width:1400px;height:800px;"></div>
+<div id="example" class="parcoords" style="width:1600px;height:800px;"></div>
 <script>
     // quantitative color scale
                 
@@ -15,7 +15,7 @@
     {parcoords.brushReset();})
     
     var blue_to_brown = d3.scale.linear()
-      .domain([0, 100])
+      .domain([0, 0.1])
         .range(["steelblue", "brown"])
           .interpolate(d3.interpolateLab);
           
@@ -23,7 +23,7 @@
           
           var parcoords = d3.parcoords()("#example")
               .color(color)
-                  .alpha(0.9);
+                  .alpha(0.4);
                   
                   // load csv file and create the chart
                   d3.csv('/data/miami.csv', function(data) {

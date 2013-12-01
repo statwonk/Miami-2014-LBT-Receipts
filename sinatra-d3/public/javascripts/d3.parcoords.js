@@ -41,8 +41,6 @@ var pc = function(selection) {
   return pc;
 };
 
-var formatPercent = d3.format(".0%")
-
 var events = d3.dispatch.apply(this,["render", "resize", "highlight", "brush"].concat(d3.keys(__))),
     w = function() { return __.width - __.margin.right - __.margin.left; },
     h = function() { return __.height - __.margin.top - __.margin.bottom },
@@ -58,7 +56,7 @@ var events = d3.dispatch.apply(this,["render", "resize", "highlight", "brush"].c
     yscale = {},
     dragging = {},
     line = d3.svg.line(),
-    axis = d3.svg.axis().orient("left").ticks(5).tickFormat(formatPercent),
+    axis = d3.svg.axis().orient("left").ticks(5),
     g, // groups for axes, brushes
     ctx = {},
     canvas = {};
@@ -162,7 +160,7 @@ pc.autoscale = function() {
   ctx.foreground.lineWidth = 2;
   ctx.foreground.globalCompositeOperation = __.composite;
   ctx.foreground.globalAlpha = __.alpha;
-  ctx.highlight.lineWidth = 3;
+  ctx.highlight.lineWidth = 5;
   ctx.shadows.strokeStyle = "#dadada";
 
   return this;
@@ -330,7 +328,9 @@ pc.updateAxes = function() {
       .append("svg:g")
       .attr("class", "axis")
       .attr("transform", "translate(0,0)")
-      .each(function(d) { d3.select(this).call(axis.scale(yscale[d])); })
+      .each(function(d) {
+              d3.select(this).call(axis.scale(yscale[d]));
+          })
     .append("svg:text")
       .attr({
         "text-anchor": "middle",
