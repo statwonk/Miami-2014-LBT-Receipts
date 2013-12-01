@@ -1,11 +1,11 @@
 <!doctype html>
 <title>Brushing Example</title>
-<link rel="stylesheet" type="text/css" href="/stylesheets/d3.parcoords.css">
-<link rel="stylesheet" type="text/css" href="/stylesheets/style.css">
+<link rel="stylesheet" type="text/css" href="../d3.parcoords.css">
+<link rel="stylesheet" type="text/css" href="style.css">
 <script src="/javascripts/d3.min.js"></script>
 <script src="/javascripts/d3.parcoords.js"></script>
-<div id="example" class="parcoords" style="width:10000px;height:800px;"></div>
-<p>Loads an external <a href="/data/miami.csv">csv file</a>, creates a custom
+<div id="example" class="parcoords" style="width:960px;height:200px;"></div>
+<p>Loads an external <a href="../data/cars.csv">csv file</a>, creates a custom
 <a
     href="https://github.com/mbostock/d3/wiki/Quantitative-Scales#wiki-quantitative">quantitative
     color scale</a> using <a href="http://bl.ocks.org/3014589">L*a*b
@@ -19,14 +19,14 @@
         .range(["steelblue", "brown"])
           .interpolate(d3.interpolateLab);
           
-          var color = function(d) { return blue_to_brown(d['Administrative office, operation center or Other unclassified businesses']); };
+          var color = function(d) { return blue_to_brown(d['economy (mpg)']); };
           
           var parcoords = d3.parcoords()("#example")
               .color(color)
                   .alpha(0.4);
                   
                   // load csv file and create the chart
-                  d3.csv('/data/miami.csv', function(data) {
+                  d3.csv('/data/cars.csv', function(data) {
                     parcoords
                     .data(data)
                     .render()
