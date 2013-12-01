@@ -1,0 +1,14 @@
+
+svg {
+    border: solid 1px #000;
+      display: block;
+        margin: auto;
+          font-family: "Helvetica Neue";
+}
+
+.line {
+    fill: none;
+      stroke: #000;
+        stroke-width: 2px;
+}
+
